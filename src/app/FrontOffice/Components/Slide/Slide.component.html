@@ -1,7 +1,7 @@
 <div class="flex flex-col justify-center items-center p-3">
   @if (slides != null) {
-    <div class="ring-2 ring-accent rounded-2xl">
-      <img class="rounded-2xl" [src]="getCurrentSlide().Url" alt="{{ getCurrentSlide().Title }}"/>
+    <div class="ring-2 ring-accent rounded-2xl" style="width:{{width}}; height: {{height}};">
+      <img class="rounded-2xl" style="width:{{width}}; height: {{height}};" [src]="getCurrentSlide().Url" alt="{{ getCurrentSlide().Title }}"/>
     </div>
     @if ( slides.length > 1 ) {
       <div class="flex justify-between join transform -translate-y-6">

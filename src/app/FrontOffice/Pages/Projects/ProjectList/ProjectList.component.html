@@ -25,7 +25,11 @@
                 <div class="input">{{ proj.ProjectUrl }}</div>
               </div>
               <div class="flex justify-center">
-                <img src="https://dummyimage.com/600x400/a8a8a8/000000.jpg" alt="{{ proj.Name }}" class="w-full h-full">
+                @if (proj.Image) {
+                  <img src="{{ proj.Image }}" alt="{{ proj.Name }}" class="object-fit w-full xl:h-80">
+                } @else {
+                  <img src="assets/img/img_not_found.png" alt="{{ proj.Name }}" class="object-fit w-full xl:h-80">
+                }
               </div>
             </div>
           </a>

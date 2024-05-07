@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, WritableSignal, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, WritableSignal, signal } from '@angular/core';
 import { SlideInterface } from '../../Data/Slide/SlideInterface';
 
 @Component({
@@ -12,8 +12,15 @@ import { SlideInterface } from '../../Data/Slide/SlideInterface';
   styles: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SlideComponent {
-  @Input() slides: SlideInterface[]|null = []
+export class SlideComponent implements AfterViewInit {
+  @Input() slides: SlideInterface[] | null = []
+
+  @Input() width: string = "100%";
+  @Input() height: string = "100%";
+
+  ngAfterViewInit(): void {
+    console.log(this.height);
+  }
 
   currentIndex: WritableSignal<number> = signal<number>(0);
 

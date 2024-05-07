@@ -1,6 +1,7 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CompanyService } from '../../Services/Company.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +14,16 @@ import { RouterLink } from '@angular/router';
   styleUrl: './Profile.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileComponent {
+export class ProfileComponent
+{
+  companyList = this.companyService.getCompanies();
+
+
+  constructor(private companyService: CompanyService) {
+    this.companyList().forEach(element => {
+      console.log(`${element.Name}: ${element.Id}`);
+
+    });
+  }
 
 }
